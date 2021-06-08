@@ -105,7 +105,7 @@ export default defineComponent({
       this.$q
         .dialog({
           title: "Confirm",
-          message: "Would you like to turn on the wifi?",
+          message: "Really deleted?",
           cancel: true,
           persistent: true,
         })
