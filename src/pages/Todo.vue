@@ -59,14 +59,14 @@ import { db } from "../firebase/config";
 
 export default defineComponent({
   // setup() {
-  //   const { documents } = getCollection("quasar-todos");
+  //   const { documents } = getCollection("todos");
 
   //   const deleteTask = (id) => {
-  //     db.collection("quasar-todos").doc(id).delete();
+  //     db.collection("todos").doc(id).delete();
   //   };
 
   //   const updateTask = (id, done) => {
-  //     db.collection("quasar-todos").doc(id).update({ done: !done });
+  //     db.collection("todos").doc(id).update({ done: !done });
   //   };
 
   //   return {
@@ -83,7 +83,7 @@ export default defineComponent({
     };
   },
   created() {
-    db.collection("quasar-todos")
+    db.collection("todos")
       .orderBy("createdAt")
       .onSnapshot(
         (snap) => {
@@ -110,15 +110,15 @@ export default defineComponent({
           persistent: true,
         })
         .onOk(() => {
-          db.collection("quasar-todos").doc(id).delete();
+          db.collection("todos").doc(id).delete();
           this.$q.notify({ message: "Task deleted" });
         });
     },
     updateTask(id, done) {
-      db.collection("quasar-todos").doc(id).update({ done: !done });
+      db.collection("todos").doc(id).update({ done: !done });
     },
     addTask() {
-      db.collection('quasar-todos').add({
+      db.collection('todos').add({
         title: this.newTask,
         done: false,
         createdAt: new Date().toLocaleString()
